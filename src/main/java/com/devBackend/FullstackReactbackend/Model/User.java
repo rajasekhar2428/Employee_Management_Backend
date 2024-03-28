@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="Project")
+@Table(name="db")
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,8 +23,16 @@ public class User {
 	@Column(name="email")
 	private String email;
 	
+	@Column(name="departnemt")
+	private String department;
 	
 	
+	public String getDepartment() {
+		return department;
+	}
+	public void setDepartment(String department) {
+		this.department = department;
+	}
 	public long getId() {
 		return id;
 	}
