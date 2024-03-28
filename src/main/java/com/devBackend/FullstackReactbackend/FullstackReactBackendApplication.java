@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class FullstackReactBackendApplication {
 
 	public static void main(String[] args) {
-		System.out.println("Moye moye");
+		System.out.println("Start My Application");
 		SpringApplication.run(FullstackReactBackendApplication.class, args);
 	}
 
