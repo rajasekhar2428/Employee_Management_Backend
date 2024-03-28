@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.devBackend.FullstackReactbackend.Model.User;
 import com.devBackend.FullstackReactbackend.exception.UserNotFoundException;
 import com.devBackend.FullstackReactbackend.repository.UserRepository;
@@ -32,6 +33,11 @@ public class Usercontroller {
 		return userRepository.findAll();
 	}
 	
+	@GetMapping("/users/{department}")
+	List<User> getUserByDeparment(@PathVariable String department){
+		return userRepository.findByDepartment(department);
+	}
+	
 	@GetMapping("/user/{id}")
 	User getUserById(@PathVariable Long id) {
 		return userRepository.findById(id)
@@ -45,6 +51,7 @@ public class Usercontroller {
 	                user.setUsername(newUser.getUsername());
 	                user.setName(newUser.getName());
 	                user.setEmail(newUser.getEmail());
+	                user.setDepartment(newUser.getDepartment());
 	                return userRepository.save(user); // Return the updated user after saving changes
 	            })
 	            .orElseThrow(() -> new UserNotFoundException(id));
